@@ -9,13 +9,20 @@ import {
   Title,
   Right,
   Fab,
-  Card,
-  CardItem,
-  H4
+  View
 } from "native-base";
-import { View, Text } from "react-native";
+import ListItem from "./components/ListItem";
+import AddListModal from "./modals/AddList";
 
 export default class App extends React.Component {
+  state = {
+    add_list_modal: false
+  };
+
+  toggleAddListModal = () => {
+    this.setState(prev => ({ add_list_modal: !prev.add_list_modal }));
+  };
+
   render() {
     return (
       <Container>
@@ -35,20 +42,18 @@ export default class App extends React.Component {
           </Right>
         </Header>
         <View style={{ flex: 1, padding: 10 }}>
-          <Card>
-            <CardItem>
-              <Text style={{ fontSize: 19, fontWeight: "500" }}>
-                Learn React Native
-              </Text>
-            </CardItem>
-          </Card>
+          <ListItem />
           <Fab
             position="bottomRight"
             style={{ backgroundColor: "#5067FF" }}
-            onPress={() => console.log("HELLO")}
+            onPress={this.toggleAddListModal}
           >
             <Icon name="add" />
           </Fab>
+          <AddListModal
+            visible={this.state.add_list_modal}
+            toggle={this.toggleAddListModal}
+          />
         </View>
       </Container>
     );
