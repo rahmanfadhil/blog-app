@@ -25,7 +25,7 @@ export default class AppHeader extends Component {
     const HeaderNormal = (
       <Header>
         <Left>
-          <Button transparent>
+          <Button transparent onPress={this.props.openDrawer}>
             <Icon name="menu" />
           </Button>
         </Left>

@@ -9,7 +9,8 @@ import {
   Button,
   Icon,
   Content,
-  Container
+  Container,
+  Right
 } from "native-base";
 
 export default class AddListModal extends Component {
@@ -51,9 +52,13 @@ export default class AddListModal extends Component {
               placeholder="Description"
               onChangeText={value => this.onInputChange("description", value)}
             />
-            <Button block style={{ marginTop: 10 }}>
+            <Button block iconLeft style={{ marginTop: 10 }}>
               <Icon name="add" />
               <Text>add to list</Text>
+            </Button>
+            <Button block iconLeft style={{ marginTop: 10 }}>
+              <Icon name="filing" />
+              <Text>Save to Draft</Text>
             </Button>
           </Content>
         </Container>
