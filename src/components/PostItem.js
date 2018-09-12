@@ -20,7 +20,11 @@ export default class PostItem extends Component {
           </Text>
         </CardItem>
         <CardItem>
-          <Text>Todo Description</Text>
+          <Text>
+            Lorem ipsum dolor sit amet, an unum atqui latine qui, ex sea nonumes
+            gubergren. Postea graecis fastidii an eam, ea mei regione copiosae
+            expetendis.
+          </Text>
         </CardItem>
         <CardItem>
           <View
@@ -32,17 +36,22 @@ export default class PostItem extends Component {
           >
             <Button
               small
-              iconLeft
+              success
+              style={{ marginRight: 10 }}
+              onPress={this.props.toggleEdit}
+            >
+              <Icon name="cloud-upload" />
+            </Button>
+            <Button
+              small
               warning
               style={{ marginRight: 10 }}
               onPress={this.props.toggleEdit}
             >
               <Icon name="create" />
-              <Text>Edit</Text>
             </Button>
-            <Button small iconLeft danger>
+            <Button small danger>
               <Icon name="trash" />
-              <Text>Remove</Text>
             </Button>
           </View>
         </CardItem>
