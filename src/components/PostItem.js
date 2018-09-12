@@ -27,13 +27,9 @@ export default class PostItem extends Component {
             style={{
               flex: 1,
               flexDirection: "row",
-              justifyContent: "space-between"
+              justifyContent: "flex-end"
             }}
           >
-            <Button small iconLeft success style={{ marginRight: 10 }}>
-              <Icon name="cloud-upload" />
-              <Text>Publish</Text>
-            </Button>
             <Button
               small
               iconLeft
