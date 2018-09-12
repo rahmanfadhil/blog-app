@@ -34,12 +34,7 @@ export default class PostItem extends Component {
               justifyContent: "flex-end"
             }}
           >
-            <Button
-              small
-              success
-              style={{ marginRight: 10 }}
-              onPress={this.props.toggleEdit}
-            >
+            <Button small success style={{ marginRight: 10 }}>
               <Icon name="cloud-upload" />
             </Button>
             <Button

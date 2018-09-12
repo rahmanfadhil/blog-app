@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, TextInput } from "react-native";
+import { Modal } from "react-native";
 import {
   Text,
   Header,
@@ -10,13 +10,17 @@ import {
   Icon,
   Content,
   Container,
-  Right
+  Right,
+  Item,
+  Input,
+  Form,
+  Label
 } from "native-base";
 
 export default class EditPostModal extends Component {
   state = {
     title: "",
-    description: ""
+    content: ""
   };
 
   onInputChange = (name, value) => {
@@ -47,16 +51,21 @@ export default class EditPostModal extends Component {
             </Right>
           </Header>
           <Content style={{ padding: 30 }}>
-            <TextInput
-              value={this.state.title}
-              placeholder="Name"
-              onChangeText={value => this.onInputChange("title", value)}
-            />
-            <TextInput
-              value={this.state.description}
-              placeholder="Description"
-              onChangeText={value => this.onInputChange("description", value)}
-            />
+            <Item>
+              <Input
+                value={this.state.title}
+                placeholder="Title"
+                onChangeText={value => this.onInputChange("title", value)}
+              />
+            </Item>
+            <Item>
+              <Input
+                multiline
+                placeholder="Content"
+                value={this.state.content}
+                onChangeText={value => this.onInputChange("content", value)}
+              />
+            </Item>
             <Button block iconLeft success style={{ marginTop: 10 }}>
               <Icon name="checkmark" />
               <Text>save post</Text>

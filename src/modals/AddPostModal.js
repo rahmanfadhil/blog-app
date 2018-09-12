@@ -10,13 +10,15 @@ import {
   Icon,
   Content,
   Container,
-  Right
+  Right,
+  Input,
+  Item
 } from "native-base";
 
 export default class AddPostModal extends Component {
   state = {
     title: "",
-    description: ""
+    content: ""
   };
 
   onInputChange = (name, value) => {
@@ -47,16 +49,21 @@ export default class AddPostModal extends Component {
             </Right>
           </Header>
           <Content style={{ padding: 30 }}>
-            <TextInput
-              value={this.state.title}
-              placeholder="Name"
-              onChangeText={value => this.onInputChange("title", value)}
-            />
-            <TextInput
-              value={this.state.description}
-              placeholder="Description"
-              onChangeText={value => this.onInputChange("description", value)}
-            />
+            <Item>
+              <Input
+                value={this.state.title}
+                placeholder="Name"
+                onChangeText={value => this.onInputChange("title", value)}
+              />
+            </Item>
+            <Item>
+              <Input
+                multiline
+                value={this.state.content}
+                placeholder="Content"
+                onChangeText={value => this.onInputChange("content", value)}
+              />
+            </Item>
             <Button block iconLeft success style={{ marginTop: 10 }}>
               <Icon name="cloud-upload" />
               <Text>publish post</Text>
