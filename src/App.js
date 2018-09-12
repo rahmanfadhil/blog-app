@@ -1,10 +1,15 @@
 import React from "react";
+import { Provider } from "react-redux";
+import { FlatList } from "react-native";
 import { Container, Icon, Fab, View, Drawer } from "native-base";
+
 import PostItem from "./components/PostItem";
 import AddPostModal from "./modals/AddPostModal";
 import AppHeader from "./components/AppHeader";
 import AppSidebar from "./components/AppSidebar";
 import EditPostModal from "./modals/EditPostModal";
+
+import store from "./store";
 
 export default class App extends React.Component {
   state = {
@@ -29,36 +34,37 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Drawer
-        ref={ref => {
-          this.drawer = ref;
-        }}
-        content={<AppSidebar navigator={this.navigator} />}
-        onClose={() => this.closeDrawer()}
-      >
-        <Container>
-          <AppHeader openDrawer={this.openDrawer} />
-          <View style={{ flex: 1, padding: 10 }}>
-            <PostItem toggleEdit={this.toggleEditPostModal} />
-            <PostItem toggleEdit={this.toggleEditPostModal} />
-            <Fab
-              position="bottomRight"
-              style={{ backgroundColor: "#5067FF" }}
-              onPress={this.toggleAddPostModal}
-            >
-              <Icon name="add" />
-            </Fab>
-            <AddPostModal
-              visible={this.state.add_post_modal}
-              toggle={this.toggleAddPostModal}
-            />
-            <EditPostModal
-              visible={this.state.edit_post_modal}
-              toggle={this.toggleEditPostModal}
-            />
-          </View>
-        </Container>
-      </Drawer>
+      <Provider store={store}>
+        <Drawer
+          ref={ref => {
+            this.drawer = ref;
+          }}
+          content={<AppSidebar navigator={this.navigator} />}
+          onClose={() => this.closeDrawer()}
+        >
+          <Container>
+            <AppHeader openDrawer={this.openDrawer} />
+            <View style={{ flex: 1, padding: 10 }}>
+              <PostItem toggleEdit={this.toggleEditPostModal} />
+              <Fab
+                position="bottomRight"
+                style={{ backgroundColor: "#5067FF" }}
+                onPress={this.toggleAddPostModal}
+              >
+                <Icon name="add" />
+              </Fab>
+              <AddPostModal
+                visible={this.state.add_post_modal}
+                toggle={this.toggleAddPostModal}
+              />
+              <EditPostModal
+                visible={this.state.edit_post_modal}
+                toggle={this.toggleEditPostModal}
+              />
+            </View>
+          </Container>
+        </Drawer>
+      </Provider>
     );
   }
 }

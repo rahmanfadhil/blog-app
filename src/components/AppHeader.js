@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   Header,
   Left,
@@ -12,7 +13,7 @@ import {
   Text
 } from "native-base";
 
-export default class AppHeader extends Component {
+class AppHeader extends Component {
   state = {
     search: false
   };
@@ -34,7 +35,7 @@ export default class AppHeader extends Component {
         </Body>
         <Right>
           <Button transparent>
-            <Icon name="refresh" />
+            <Icon name="refresh" onPress={this.props.getPosts} />
           </Button>
           <Button transparent onPress={this.toggleSearch}>
             <Icon name="search" />
@@ -57,3 +58,15 @@ export default class AppHeader extends Component {
     return !this.state.search ? HeaderNormal : HeaderSearch;
   }
 }
+
+export default connect(
+  state => ({ state }),
+  dispatch => ({
+    getPosts: () => {
+      dispatch({
+        type: "FETCH_POSTS",
+        payload: fetch("http://10.0.2.2:3000/posts").then(data => data.json())
+      });
+    }
+  })
+)(AppHeader);
