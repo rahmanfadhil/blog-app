@@ -10,7 +10,7 @@ import {
   View
 } from "native-base";
 
-export default class ListItem extends Component {
+export default class PostItem extends Component {
   render() {
     return (
       <Card>
@@ -32,7 +32,7 @@ export default class ListItem extends Component {
           >
             <Button small iconLeft success style={{ marginRight: 10 }}>
               <Icon name="checkmark-circle" />
-              <Text>Done</Text>
+              <Text>Publish</Text>
             </Button>
             <Button small iconLeft warning style={{ marginRight: 10 }}>
               <Icon name="create" />

@@ -1,32 +1,17 @@
 import React from "react";
-import {
-  Header,
-  Container,
-  Left,
-  Button,
-  Icon,
-  Body,
-  Title,
-  Right,
-  Fab,
-  View,
-  Item,
-  Input,
-  Text,
-  Drawer
-} from "native-base";
-import ListItem from "./components/ListItem";
-import AddListModal from "./modals/AddList";
+import { Container, Icon, Fab, View, Drawer } from "native-base";
+import PostItem from "./components/PostItem";
+import AddPostModal from "./modals/AddPostModal";
 import AppHeader from "./components/AppHeader";
 import AppSidebar from "./components/AppSidebar";
 
 export default class App extends React.Component {
   state = {
-    add_list_modal: false
+    add_post_modal: false
   };
 
-  toggleAddListModal = () => {
-    this.setState(prev => ({ add_list_modal: !prev.add_list_modal }));
+  toggleAddPostModal = () => {
+    this.setState(prev => ({ add_post_modal: !prev.add_post_modal }));
   };
 
   closeDrawer = () => {
@@ -48,18 +33,18 @@ export default class App extends React.Component {
         <Container>
           <AppHeader openDrawer={this.openDrawer} />
           <View style={{ flex: 1, padding: 10 }}>
-            <ListItem />
-            <ListItem />
+            <PostItem />
+            <PostItem />
             <Fab
               position="bottomRight"
               style={{ backgroundColor: "#5067FF" }}
-              onPress={this.toggleAddListModal}
+              onPress={this.toggleAddPostModal}
             >
               <Icon name="add" />
             </Fab>
-            <AddListModal
-              visible={this.state.add_list_modal}
-              toggle={this.toggleAddListModal}
+            <AddPostModal
+              visible={this.state.add_post_modal}
+              toggle={this.toggleAddPostModal}
             />
           </View>
         </Container>
