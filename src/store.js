@@ -3,16 +3,24 @@ import promise from "redux-promise-middleware";
 import logger from "redux-logger";
 
 const reducers = (
-  state = { loading: false, error: null, data: [] },
+  state = {
+    loading: false,
+    error: null,
+    data: [],
+    edit_post: { key: 0, content: "", title: "" }
+  },
   action
 ) => {
-  switch (action.payload) {
+  switch (action.type) {
     case "FETCH_POSTS_PENDING":
-      return { loading: true };
-    case "FETCH_POSTS_REJECTED":
-      return { loading: false, error: action.payload };
+      return { ...state, loading: true };
     case "FETCH_POSTS_FULFILLED":
-      return { loading: false, data: action.payload };
+      console.log(action);
+      return { ...state, loading: false, data: action.payload };
+    case "FETCH_POSTS_REJECTED":
+      return { ...state, loading: false, error: action.payload };
+    case "SET_EDIT_POST":
+      return { ...state, edit_post: action.payload };
     default:
       return state;
   }

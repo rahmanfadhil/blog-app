@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Modal } from "react-native";
+import { connect } from "react-redux";
 import {
   Text,
   Header,
@@ -12,15 +13,14 @@ import {
   Container,
   Right,
   Item,
-  Input,
-  Form,
-  Label
+  Input
 } from "native-base";
 
-export default class EditPostModal extends Component {
-  state = {
-    title: "",
-    content: ""
+class EditPostModal extends Component {
+  state = { key: 0, title: "", content: "" };
+
+  UNSAFE_componentWillReceiveProps = nextProps => {
+    this.setState(nextProps.data);
   };
 
   onInputChange = (name, value) => {
@@ -76,3 +76,5 @@ export default class EditPostModal extends Component {
     );
   }
 }
+
+export default connect(state => ({ data: state.edit_post }))(EditPostModal);

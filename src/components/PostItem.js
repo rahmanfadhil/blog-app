@@ -1,30 +1,23 @@
 import React, { Component } from "react";
-import {
-  Card,
-  CardItem,
-  Text,
-  Right,
-  Button,
-  Icon,
-  Body,
-  View
-} from "native-base";
+import { connect } from "react-redux";
+import { Card, CardItem, Text, Button, Icon, View } from "native-base";
 
-export default class PostItem extends Component {
+class PostItem extends Component {
+  _editPost = () => {
+    this.props.setEditPost(this.props.data);
+    this.props.toggle();
+  };
+
   render() {
     return (
       <Card>
         <CardItem>
           <Text style={{ fontSize: 20, fontWeight: "500" }}>
-            Learn React Native
+            {this.props.data.title}
           </Text>
         </CardItem>
         <CardItem>
-          <Text>
-            Lorem ipsum dolor sit amet, an unum atqui latine qui, ex sea nonumes
-            gubergren. Postea graecis fastidii an eam, ea mei regione copiosae
-            expetendis.
-          </Text>
+          <Text>{this.props.data.content}</Text>
         </CardItem>
         <CardItem>
           <View
@@ -41,7 +34,7 @@ export default class PostItem extends Component {
               small
               warning
               style={{ marginRight: 10 }}
-              onPress={this.props.toggleEdit}
+              onPress={this._editPost}
             >
               <Icon name="create" />
             </Button>
@@ -54,3 +47,10 @@ export default class PostItem extends Component {
     );
   }
 }
+
+export default connect(
+  state => ({ state }),
+  dispatch => ({
+    setEditPost: data => dispatch({ type: "SET_EDIT_POST", payload: data })
+  })
+)(PostItem);
