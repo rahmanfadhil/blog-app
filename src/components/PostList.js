@@ -24,11 +24,11 @@ class PostList extends Component {
   };
 
   render() {
-    return this.props.state.loading ? (
+    return this.props.posts.loading ? (
       <ActivityIndicator />
     ) : (
       <Fragment>
-        <FlatList data={this.props.state.data} renderItem={this._renderItem} />
+        <FlatList data={this.props.posts.data} renderItem={this._renderItem} />
         <EditPostModal
           visible={this.state.edit_post_modal}
           toggle={this._toggleEditPostModal}
@@ -39,7 +39,7 @@ class PostList extends Component {
 }
 
 export default connect(
-  state => ({ state }),
+  ({ posts }) => ({ posts }),
   dispatch => ({
     getPosts: () =>
       dispatch({

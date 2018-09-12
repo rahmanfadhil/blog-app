@@ -60,7 +60,7 @@ class AppHeader extends Component {
 }
 
 export default connect(
-  state => ({ state }),
+  ({ posts }) => ({ posts }),
   dispatch => ({
     getPosts: () => {
       dispatch({
