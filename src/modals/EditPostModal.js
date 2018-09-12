@@ -9,10 +9,11 @@ import {
   Button,
   Icon,
   Content,
-  Container
+  Container,
+  Right
 } from "native-base";
 
-export default class AddPostModal extends Component {
+export default class EditPostModal extends Component {
   state = {
     title: "",
     description: ""
@@ -37,8 +38,13 @@ export default class AddPostModal extends Component {
               </Button>
             </Left>
             <Body>
-              <Title>Publish Post</Title>
+              <Title>Edit Post</Title>
             </Body>
+            <Right>
+              <Button transparent onPress={this.props.toggle}>
+                <Icon name="close" />
+              </Button>
+            </Right>
           </Header>
           <Content style={{ padding: 30 }}>
             <TextInput
@@ -52,12 +58,8 @@ export default class AddPostModal extends Component {
               onChangeText={value => this.onInputChange("description", value)}
             />
             <Button block iconLeft success style={{ marginTop: 10 }}>
-              <Icon name="cloud-upload" />
-              <Text>publish post</Text>
-            </Button>
-            <Button block iconLeft style={{ marginTop: 10 }}>
-              <Icon name="filing" />
-              <Text>Save to Draft</Text>
+              <Icon name="checkmark" />
+              <Text>save post</Text>
             </Button>
           </Content>
         </Container>

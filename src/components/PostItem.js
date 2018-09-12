@@ -34,7 +34,13 @@ export default class PostItem extends Component {
               <Icon name="checkmark-circle" />
               <Text>Publish</Text>
             </Button>
-            <Button small iconLeft warning style={{ marginRight: 10 }}>
+            <Button
+              small
+              iconLeft
+              warning
+              style={{ marginRight: 10 }}
+              onPress={this.props.toggleEdit}
+            >
               <Icon name="create" />
               <Text>Edit</Text>
             </Button>
