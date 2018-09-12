@@ -9,7 +9,8 @@ import {
   Button,
   Icon,
   Content,
-  Container
+  Container,
+  Right
 } from "native-base";
 
 export default class AddPostModal extends Component {
@@ -39,6 +40,11 @@ export default class AddPostModal extends Component {
             <Body>
               <Title>Publish Post</Title>
             </Body>
+            <Right>
+              <Button transparent onPress={this.props.toggle}>
+                <Icon name="close" />
+              </Button>
+            </Right>
           </Header>
           <Content style={{ padding: 30 }}>
             <TextInput

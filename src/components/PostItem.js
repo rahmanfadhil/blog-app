@@ -31,7 +31,7 @@ export default class PostItem extends Component {
             }}
           >
             <Button small iconLeft success style={{ marginRight: 10 }}>
-              <Icon name="checkmark-circle" />
+              <Icon name="cloud-upload" />
               <Text>Publish</Text>
             </Button>
             <Button
