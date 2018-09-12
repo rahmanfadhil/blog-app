@@ -9,10 +9,14 @@ import {
   Title,
   Right,
   Fab,
-  View
+  View,
+  Item,
+  Input,
+  Text
 } from "native-base";
 import ListItem from "./components/ListItem";
 import AddListModal from "./modals/AddList";
+import AppHeader from "./components/AppHeader";
 
 export default class App extends React.Component {
   state = {
@@ -26,22 +30,9 @@ export default class App extends React.Component {
   render() {
     return (
       <Container>
-        <Header>
-          <Left>
-            <Button transparent>
-              <Icon name="menu" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Blog App</Title>
-          </Body>
-          <Right>
-            <Button transparent>
-              <Icon name="refresh" />
-            </Button>
-          </Right>
-        </Header>
+        <AppHeader />
         <View style={{ flex: 1, padding: 10 }}>
+          <ListItem />
           <ListItem />
           <Fab
             position="bottomRight"

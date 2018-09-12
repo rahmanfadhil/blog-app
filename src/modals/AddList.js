@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Modal, TextInput } from "react-native";
 import {
-  View,
   Text,
   Header,
   Body,
@@ -10,9 +9,7 @@ import {
   Button,
   Icon,
   Content,
-  Input,
-  Container,
-  H1
+  Container
 } from "native-base";
 
 export default class AddListModal extends Component {
