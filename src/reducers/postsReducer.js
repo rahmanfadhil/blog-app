@@ -10,7 +10,6 @@ const postsReducer = (
     case "FETCH_POSTS_PENDING":
       return { ...state, loading: true };
     case "FETCH_POSTS_FULFILLED":
-      console.log(action);
       return { ...state, loading: false, data: action.payload };
     case "FETCH_POSTS_REJECTED":
       return { ...state, loading: false, error: action.payload };

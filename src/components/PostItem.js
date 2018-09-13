@@ -10,7 +10,6 @@ class PostItem extends Component {
   };
 
   render() {
-    console.log(this.props.data);
     return (
       <Card>
         <CardItem>
