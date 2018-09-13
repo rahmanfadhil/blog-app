@@ -1,5 +1,5 @@
 const editPostReducer = (
-  state = { key: 0, content: "", title: "" },
+  state = { key: 0, content: "", img: "", title: "" },
   action
 ) => {
   switch (action.type) {

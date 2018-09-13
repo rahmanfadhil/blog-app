@@ -17,7 +17,7 @@ import {
 } from "native-base";
 
 class EditPostModal extends Component {
-  state = { key: 0, title: "", content: "" };
+  state = { key: 0, title: "", img: "", content: "" };
 
   UNSAFE_componentWillReceiveProps = nextProps => {
     this.setState(nextProps.data);
@@ -52,17 +52,27 @@ class EditPostModal extends Component {
           </Header>
           <Content style={{ padding: 30 }}>
             <Item>
+              <Icon active name="create" />
               <Input
                 value={this.state.title}
-                placeholder="Title"
+                placeholder="Name"
                 onChangeText={value => this.onInputChange("title", value)}
               />
             </Item>
             <Item>
+              <Icon active name="camera" />
+              <Input
+                value={this.state.img}
+                placeholder="Image Url"
+                onChangeText={value => this.onInputChange("img", value)}
+              />
+            </Item>
+            <Item>
+              <Icon active name="list" />
               <Input
                 multiline
-                placeholder="Content"
                 value={this.state.content}
+                placeholder="Content"
                 onChangeText={value => this.onInputChange("content", value)}
               />
             </Item>

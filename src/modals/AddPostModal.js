@@ -18,6 +18,7 @@ import {
 export default class AddPostModal extends Component {
   state = {
     title: "",
+    img: "",
     content: ""
   };
 
@@ -50,6 +51,7 @@ export default class AddPostModal extends Component {
           </Header>
           <Content style={{ padding: 30 }}>
             <Item>
+              <Icon active name="create" />
               <Input
                 value={this.state.title}
                 placeholder="Name"
@@ -57,6 +59,15 @@ export default class AddPostModal extends Component {
               />
             </Item>
             <Item>
+              <Icon active name="camera" />
+              <Input
+                value={this.state.img}
+                placeholder="Image Url"
+                onChangeText={value => this.onInputChange("img", value)}
+              />
+            </Item>
+            <Item>
+              <Icon active name="list" />
               <Input
                 multiline
                 value={this.state.content}

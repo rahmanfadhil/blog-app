@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Image } from "react-native";
 import { Card, CardItem, Text, Button, Icon, View } from "native-base";
 
 class PostItem extends Component {
@@ -9,12 +10,19 @@ class PostItem extends Component {
   };
 
   render() {
+    console.log(this.props.data);
     return (
       <Card>
         <CardItem>
           <Text style={{ fontSize: 20, fontWeight: "500" }}>
             {this.props.data.title}
           </Text>
+        </CardItem>
+        <CardItem cardBody>
+          <Image
+            source={{ uri: "https://picsum.photos/640/480?image=0" }}
+            style={{ width: null, height: 200, flex: 1 }}
+          />
         </CardItem>
         <CardItem>
           <Text>{this.props.data.content}</Text>
